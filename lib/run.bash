@@ -2,7 +2,7 @@
 
 compose_cleanup() {
   # Send them a friendly kill
-  run_docker_compose kill || true
+  run_docker_compose kill -s SIGINT || true
 
   # `compose down` doesn't support force removing images
   if [[ "$(plugin_read_config LEAVE_VOLUMES 'false')" == "false" ]]; then
